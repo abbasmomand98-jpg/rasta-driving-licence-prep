@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasta — Driving Licence Test Prep &amp; Appointment Tracker (UX Concept)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">R</span> Rasta</div>
+  <p class="tagline">Pass the signs test. Skip the agent. — Driving licence test prep &amp; appointment tracker for Pakistan</p>
+  <p class="sample-note">SAMPLE DATA — every fee, licence number, office, appointment and figure shown here is invented for this UX concept demo. No real office, licence number, or person appears. Rasta is an unofficial concept, not a government service: always confirm fees, test rules, appointment slots and licence status with the licensing authority before paying anyone anything.</p>
+</header>
+
+<nav class="tabs" aria-label="Rasta sections">
+  <button id="tab-mocktest" class="tab-btn active" data-tab="mocktest">Mock Test</button>
+  <button id="tab-appointments" class="tab-btn" data-tab="appointments">Appointments</button>
+  <button id="tab-tracker" class="tab-btn" data-tab="tracker">Tracker</button>
+  <button id="tab-feecheck" class="tab-btn" data-tab="feecheck">Fee Checker</button>
+  <button id="tab-scam" class="tab-btn" data-tab="scam">Scam Spotter</button>
+  <button id="tab-checklist" class="tab-btn" data-tab="checklist">Checklist</button>
+</nav>
+
+<main>
+  <!-- Mock test -->
+  <section class="card" id="section-mocktest">
+    <p class="eyebrow">MOCK TEST</p>
+    <h2>Pass the signs test. Skip the agent.</h2>
+    <p class="hint">Ten questions on the real road signs, in Urdu and English. Instant scoring, pass mark 7/10. Bilal, 19, from Peshawar — who failed the signs test twice from a photocopied English booklet — scores 8/10 on his first try: a pass.</p>
+    <div id="quiz-intro" class="alert ok"><strong>Bilal's result — 8/10, PASS</strong><p>First try, pass mark 7/10. Ten real road signs in Urdu and English. Now try it yourself.</p></div>
+    <div id="quiz-box">
+      <p id="quiz-progress"></p>
+      <p id="quiz-score"></p>
+      <div id="quiz-question"></div>
+      <div id="quiz-options"></div>
+      <p id="quiz-feedback"></p>
+      <button id="quiz-next">Next question</button>
+    </div>
+    <div id="quiz-result"></div>
+    <div id="quiz-review"></div>
+    <button id="quiz-start">Start the mock test</button>
+    <button id="quiz-restart" class="secondary">Retake the test</button>
+  </section>
+
+  <!-- Appointments -->
+  <section class="card" id="section-appointments" style="display:none">
+    <p class="eyebrow">APPOINTMENT BOARD</p>
+    <h2>Book a slot before you leave home.</h2>
+    <p class="hint">Live appointment slots across six city offices. Pick a city, book a slot, and get a digital receipt — no dawn queue, no agent.</p>
+    <div class="verify-row">
+      <label>City
+        <select id="office-city">
+          <option>All cities</option>
+          <option>Lahore</option>
+          <option>Karachi</option>
+          <option>Islamabad</option>
+          <option>Peshawar</option>
+          <option>Rawalpindi</option>
+          <option>Quetta</option>
+        </select>
+      </label>
+    </div>
+    <div id="office-list"></div>
+    <p id="office-summary"></p>
+    <div id="booking-result"></div>
+  </section>
+
+  <!-- Licence tracker -->
+  <section class="card" id="section-tracker" style="display:none">
+    <p class="eyebrow">LICENCE TRACKER</p>
+    <h2>Where is my licence?</h2>
+    <p class="hint">Track your licence card from application to your door. Type the licence card number from your receipt.</p>
+    <div class="verify-row">
+      <label>Licence card number
+        <input id="lcn-input" type="text" value="LCN-2026-4812" spellcheck="false">
+      </label>
+      <button id="lcn-btn">Track licence</button>
+    </div>
+    <p class="hint">Try: LCN-2026-4812 (printing, ready 14 Nov 2026), LCN-2026-077 (under verification), LCN-2026-310 (dispatched).</p>
+    <div id="lcn-result"></div>
+  </section>
+
+  <!-- Fee checker -->
+  <section class="card" id="section-feecheck" style="display:none">
+    <p class="eyebrow">AGENT-FEE CHECKER</p>
+    <h2>What did the agent charge?</h2>
+    <p class="hint">The official total is Rs 2,500: learner permit Rs 500 + signs &amp; road test Rs 1,000 + licence card Rs 1,000. Type any agent's quote and see the overcharge.</p>
+    <div class="verify-row">
+      <label>Agent's quote (Rs)
+        <input id="quote-input" type="number" min="0" step="100" value="8000">
+      </label>
+      <button id="quote-btn">Check the fee</button>
+    </div>
+    <p class="hint">Try: Rs 8,000 — the agent's quote from the sample story. Bilal paid an agent Rs 6,000 who vanished.</p>
+    <div id="fee-result"></div>
+  </section>
+
+  <!-- Scam spotter -->
+  <section class="card" id="section-scam" style="display:none">
+    <p class="eyebrow">SCAM SPOTTER</p>
+    <h2>Score an agent's offer</h2>
+    <p class="hint">Tick every red flag in the offer you were given. Three or more means walk away.</p>
+    <ul id="scam-flags" class="flags-list"></ul>
+    <p id="scam-score"></p>
+    <div id="scam-verdict"></div>
+  </section>
+
+  <!-- Document checklist -->
+  <section class="card" id="section-checklist" style="display:none">
+    <p class="eyebrow">BEFORE YOUR APPOINTMENT</p>
+    <h2>Your document checklist</h2>
+    <p class="hint">Tick each document off before your appointment — your checklist is saved on this device.</p>
+    <p id="checklist-progress"></p>
+    <ul id="checklist"></ul>
+  </section>
+
+  <button id="reset-demo" class="secondary">Reset demo data</button>
+</main>
+
+<footer>
+  <p>Rasta is an unofficial UX concept by Muhammad Abbas Khan — not a government service.</p>
+  <p>Available for new projects: abbasmomand98@gmail.com</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
